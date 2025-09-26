@@ -1,0 +1,22 @@
+﻿
+@model ABC_App.Models.Customer
+
+@{
+    ViewBag.Title = "Customer Details";
+}
+
+<h2>Details</h2>
+
+<dl class="dl-horizontal">
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+    <dt>PartitionKey</dt>
+    <dd>@Model.PartitionKey</dd>
+    <dt>RowKey</dt>
+    <dd>@Model.RowKey</dd>
+</dl>
+
+@Html.ActionLink("Edit", "Edit", new { partitionKey = Model.PartitionKey, rowKey = Model.RowKey }) |
+@Html.ActionLink("Back to List", "Index")

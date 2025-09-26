@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ABC_App.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2>
+<p>@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>PartitionKey</th>
+            <th>RowKey</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                    <td>@c.Email</td>
+                    <td>@c.PartitionKey</td>
+                    <td>@c.RowKey</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { partitionKey = c.PartitionKey, rowKey = c.RowKey }) |
+                        @Html.ActionLink("Edit", "Edit", new { partitionKey = c.PartitionKey, rowKey = c.RowKey }) |
+                        @Html.ActionLink("Delete", "Delete", new { partitionKey = c.PartitionKey, rowKey = c.RowKey })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
